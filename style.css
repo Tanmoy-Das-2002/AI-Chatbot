@@ -1,0 +1,298 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Inter",sans-serif;
+}
+body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background: linear-gradient(#EEEEFF, #C8C7FF);
+}
+.chat_container{
+    position: relative;
+    background: #fff;
+    max-width: 420px;
+    min-width: 420px;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow:0 0 128px 0px rgba(0, 0, 0, 0.1),
+    0 32px 64px -48px rgba(0, 0, 0, 0.5);
+}
+.chat_header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 22px;
+    background-color: #5350c4;
+}
+.header_info{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.9rem;
+}
+.header_logo{
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    background: #fff;
+    padding: 6px;
+    fill: #5350c4;
+    flex-shrink: 0;
+}
+.logo_text{
+    color: #fff;
+}
+.chat_header button{
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: none;
+    padding: 6px;
+    color: #fff;
+    flex-shrink: 0;
+    margin-right: -10px;
+    transition: 0.2s ease;
+    cursor: pointer;
+}
+.chat_header button:hover{
+    background-color: #3d39ac;
+}
+.chat_body{
+    display: flex;
+    flex-direction: column;
+    padding:  20px 15px 80px 15px;
+    gap: 20px;
+    height :460px;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: #ccccf5 transparent;
+}
+.chat_body #first {
+    padding-bottom: 15px;
+}
+.chat_body .message{
+    display:flex;
+    align-items: flex-end;
+    gap: 11px;
+}
+
+.chat_body .bot_message .chatbot_logo {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    align-self: flex-end;
+    background: #5350c4;
+    padding: 6px;
+    fill: #fff;
+    flex-shrink: 0;
+}
+.message_text code {
+    word-wrap: break-word; /* Ensures code inside <code> doesn't overflow */
+    overflow-wrap: break-word;
+    white-space: pre-wrap; /* Maintains code formatting */
+    display: block; /* Makes code snippets act like block for better formatting */
+    background-color: #e7e7e7;
+    padding: 8px;
+    border-radius: 8px;
+    font-family: monospace;
+    max-width: 100%; /* Ensures code block fits within the message */
+    overflow-x: auto; /* Adds horizontal scroll for very long lines */
+}
+.chat_body .message .message_text{
+    word-wrap: break-word; /* Breaks the word to the next line if it overflows */
+    overflow-wrap: break-word; /* Ensures proper wrapping for long words */
+    white-space: pre-wrap;
+    background: #f2f2ff;
+    max-width: 75%;
+    padding: 12px 16px;
+}
+.chat_body .thinking .message_text{
+    padding: 2px 16px;
+}
+.chat_body .bot_message .message_text{
+    background: #f2f2ff;
+    border-radius: 15px 15px 15px 0;
+    margin-bottom: 0; /* Remove any unnecessary margin */
+    padding-bottom: 0; /* Remove extra padding */
+}
+.chat_body .bot_message .message_text ul,
+.chat_body .bot_message .message_text ol {
+    padding-left: 20px; /* Indent lists from the left */
+    margin: 8px 0; /* Add space above and below lists */
+}
+
+.chat_body .bot_message .message_text li {
+    margin-bottom: 6px; /* Space between list items */
+    word-wrap: break-word; /* Ensure long words wrap correctly */
+    overflow-wrap: break-word;
+}
+
+.chat_body .user_message .message_text{
+    background: #5350c4;
+    color: #fff;
+    border-radius: 15px 15px 0 15px;
+}
+.chat_body .user_message{
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.thinking_indicator{
+    display: flex;
+    gap: 0.15rem;
+    padding-block: 15px;
+}
+.thinking_indicator .dot{
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #6f6bc2;
+    opacity: 0.7;
+    animation: pulse 1.5s ease-in-out infinite;
+}
+.thinking_indicator .dot:nth-child(1){
+    animation-delay: 0.1s;
+}
+.thinking_indicator .dot:nth-child(2){
+    animation-delay: 0.2s;
+}
+.thinking_indicator .dot:nth-child(3){
+    animation-delay: 0.3s;
+}
+@keyframes pulse {
+    0%,70%{
+        transform: translateY(0);
+    }
+    28%{
+        opacity: 0.4;
+        transform: translateY(-4px);
+    }
+    70%{
+        opacity: 0.2;
+    }
+}
+
+.chat_footer{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    padding: 15px 22px;
+    background-color: #fff;
+}
+.chat_footer .chat_form{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    background: #fff;
+    border-radius: 32px;
+    outline: 1px solid rgba(131, 116, 116, 0.523);
+    transition: 0.1s ease;
+}
+.chat_footer .chat_form:focus-within{
+    outline: 2px solid #5350c4;
+}
+.chat_form .message_input {
+    border: none;
+    outline: none;
+    font-size: 1rem;
+    width: 100%;
+    height: 50px;
+    resize: none;
+    padding: 14px 16px; /* Top and Bottom padding for centering */
+    border-radius: inherit;
+    overflow-y: auto; /* Allows multiline input with scroll */
+    box-sizing: border-box; /* Ensures padding doesn't affect height */
+}
+
+
+.chat_control{
+    display: flex;
+    padding-right: 6px;
+    gap: 0.2rem;
+}
+.chat_form .chat_control #send_message{
+    background: #5350c4;
+    display: none;
+    color: 
+    #fff;
+}
+.chat_form .message_input:valid~ .chat_control #send_message{
+    display: block;
+}
+
+.chat_control #send_message:hover{
+    background: #3d39ac;
+}
+.chat_footer .chat_form button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 35px;
+    width: 35px;
+    border: none;
+    color: #706db0;
+    border-radius: 50%;
+    background: none;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.chat_footer .chat_form button:hover{
+    background: #f1f1f1;
+}
+
+
+.chat_image {
+    max-width: 200px;
+    max-height: 200px;
+    border-radius: 10px;
+    margin-top: 8px;
+    object-fit: cover;
+}
+.chat_form .file_upload_wrapper {
+    height: 35px;
+    width: 35px;
+    position: relative;
+}
+.chat_form .file_upload_wrapper img{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+.chat_form .file_upload_wrapper .file_uploaded img{
+    display: block;
+}
+.emoji_picker {
+    display: none;
+    position: absolute;
+    bottom: 60px;
+    right: 20px;
+    width: 320px;
+    height: 350px;
+    overflow: hidden;
+    border: 1px solid #ccc;
+    border-radius: 12px;
+    background-color: white;
+    z-index: 10;
+  }
+  
+  .emoji {
+    cursor: pointer;
+    font-size: 24px;
+    margin: 5px;
+    display: inline-block; /* Align emojis in a grid */
+  }
+  
+  .emoji:hover {
+    background-color: #f0f0f0;
+  }
+  
